@@ -36,5 +36,31 @@ function loadJson(file,callback){
 }
 loadJson("json/data.json",(text)=>{
     var d=JSON.parse(text);
-    console.log(d)
+    details(d.details);
+    other(d.multipledata);
 })
+var root=document.getElementById("root");
+function details(cse){
+    var m=document.createElement("p");
+    m.setAttribute("class","name");
+    m.textContent=cse.mobile;
+    root.appendChild(m);
+
+
+    var n=document.createElement("h1");
+    n.setAttribute("class","name");
+    n.textContent=cse.name;
+    root.appendChild(n);
+}
+function other(r){
+    var ul=document.createElement("ul");
+    root.appendChild(ul);
+    for (let i = 0; i < r.length; i++){
+        var li=document.createElement("li");
+        li.textContent=r[i].name;
+        ul.appendChild(li);
+        var li1=document.createElement("li");
+        li.textContent=r[i].mobile;
+        ul.appendChild(li1);
+    }
+}
